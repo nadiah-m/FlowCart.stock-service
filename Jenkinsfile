@@ -16,18 +16,19 @@ pipeline {
             steps {
                 sh 'mvn clean install -DskipTests -Dspring.datasource.password=${DB_PASSWORD}'
             }
-        // post {
-        //     success {
+            post {
+                success {
+                    echo 'Build Success'
         //         echo 'Now Archiving...'
         //         archiveArtifacts artifacts: '**/target/*.war'
-        //     }
-        // }
+                }
+            }
         }
-        // stage('Test') {
-        //     steps {
-        //         sh 'mvn test -Dspring.datasource.password=${DB_PASSWORD}'
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                sh 'mvn test -Dspring.datasource.password=${DB_PASSWORD}'
+            }
+        }
         // stage('Integration Test') {
         //     steps {
         //         sh 'mvn verify -DskipUnitTests'
