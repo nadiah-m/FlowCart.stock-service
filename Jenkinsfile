@@ -8,12 +8,13 @@ pipeline {
         DOCKER_IMAGE = 'nadiah92/flowcart.stock-service'
         DOCKER_TAG = "latest-${BUILD_NUMBER}" // or use a specific version
         registryCredential = 'dockerCredentials'
+        DB_PASSWORD = credentials('my-db-password')
     }
 
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean install -DskipTests'
+                sh 'mvn clean install -DskipTests -Dspring.datasource.password=${DB_PASSWORD}'
             }
         // post {
         //     success {
@@ -24,7 +25,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -Dspring.datasource.password=${DB_PASSWORD}'
             }
         }
         stage('Integration Test') {
