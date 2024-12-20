@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import java.util.List;
+import java.util.Collections;
 
 import static org.mockito.Mockito.when;
 
@@ -24,7 +24,7 @@ class StockServiceApplicationTests {
 		order.setQty(1);
 		order.setPrice(100.50);
 		// Mock the repository call
-		when(orderRepository.findAll()).thenReturn((List<Order>) order);
+		when(orderRepository.findAll()).thenReturn(Collections.singletonList(order));
 	}
 
 }
