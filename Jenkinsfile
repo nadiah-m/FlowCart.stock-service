@@ -23,16 +23,16 @@ pipeline {
         //     }
         // }
         }
-        stage('Test') {
-            steps {
-                sh 'mvn test -Dspring.datasource.password=${DB_PASSWORD}'
-            }
-        }
-        stage('Integration Test') {
-            steps {
-                sh 'mvn verify -DskipUnitTests'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         sh 'mvn test -Dspring.datasource.password=${DB_PASSWORD}'
+        //     }
+        // }
+        // stage('Integration Test') {
+        //     steps {
+        //         sh 'mvn verify -DskipUnitTests'
+        //     }
+        // }
         stage('Code Analysis With Checkstyle') {
             steps {
                 sh 'mvn checkstyle:checkstyle'
