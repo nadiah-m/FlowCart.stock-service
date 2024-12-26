@@ -7,7 +7,7 @@ WORKDIR /app
 COPY target/stock-service-0.0.1-SNAPSHOT.jar stock-service.jar
 
 # Expose port 8080 (default Spring Boot port)
-EXPOSE 8080
+EXPOSE 8081
 
 # Run the JAR file
 ENTRYPOINT ["java", "-jar", "/app/stock-service.jar"]
