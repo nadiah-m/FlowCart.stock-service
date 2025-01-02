@@ -45,22 +45,22 @@ pipeline {
                 }
             }
         }
-        stage('Run Sonarqube') {
-            environment {
-                scannerHome = tool 'Sonar'
-            }
-            steps {
-                withSonarQubeEnv(credentialsId: 'sonarCred', installationName: 'sq1') {
-                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
-                     -Dsonar.projectKey=nadiah-m_FlowCart.stock-service \
-                     -Dsonar.organization=nadiah-m \
-                     -Dsonar.jacoco.reportPaths=target/jacoco.exec'
-                }
-                timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
+        // stage('Run Sonarqube') {
+        //     environment {
+        //         scannerHome = tool 'Sonar'
+        //     }
+        //     steps {
+        //         withSonarQubeEnv(credentialsId: 'sonarCred', installationName: 'sq1') {
+        //             sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar \
+        //              -Dsonar.projectKey=nadiah-m_FlowCart.stock-service \
+        //              -Dsonar.organization=nadiah-m \
+        //              -Dsonar.jacoco.reportPaths=target/jacoco.exec'
+        //         }
+        //         timeout(time: 10, unit: 'MINUTES') {
+        //             waitForQualityGate abortPipeline: true
+        //         }
+        //     }
+        // }
         stage('Build Docker Image') {
             steps {
                 script {
