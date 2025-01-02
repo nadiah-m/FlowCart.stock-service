@@ -8,7 +8,7 @@ pipeline {
         DOCKER_IMAGE = 'nadiah92/flowcart.stock-service'
         DOCKER_TAG = "latest-${BUILD_NUMBER}" // or use a specific version
         registryCredential = 'dockerCredentials'
-        DB_PASSWORD = credentials('my-db-password')
+        //DB_PASSWORD = credentials('my-db-password')
     }
 
     stages {
