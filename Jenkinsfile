@@ -14,7 +14,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean install -DskipTests -Dspring.datasource.password=${DB_PASSWORD}'
+                sh 'mvn clean install -DskipTests -Dspring.datasource.password=password'
+                //${DB_PASSWORD}'
             }
             post {
                 success {
